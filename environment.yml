@@ -1,0 +1,13 @@
+name: idc_demo
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.10
+  - compas
+  - compas_occ
+  - pip
+  - pip:
+    - archicad
+    - typing_extensions
+    - compas_viewer

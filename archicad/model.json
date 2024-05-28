@@ -1,0 +1,157 @@
+{
+    "dtype": "compas_timber.model/TimberModel",
+    "data": {
+        "tree": {
+            "attributes": {},
+            "root": {
+                "name": "root",
+                "frame": null,
+                "attributes": {},
+                "children": [
+                    {
+                        "element": "189f29ca-5f65-4bab-9112-7d737149baf4"
+                    },
+                    {
+                        "element": "4968ae05-1946-4e81-b909-78ed7123be38"
+                    },
+                    {
+                        "element": "ef517190-ebb5-4bac-80fb-513b1cd6dcba"
+                    }
+                ]
+            }
+        },
+        "graph": {
+            "attributes": {},
+            "default_node_attributes": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "element": null
+            },
+            "default_edge_attributes": {
+                "interactions": null
+            },
+            "node": {
+                "0": {
+                    "element": "189f29ca-5f65-4bab-9112-7d737149baf4"
+                },
+                "1": {
+                    "element": "4968ae05-1946-4e81-b909-78ed7123be38"
+                },
+                "2": {
+                    "element": "ef517190-ebb5-4bac-80fb-513b1cd6dcba"
+                }
+            },
+            "edge": {
+                "0": {},
+                "1": {},
+                "2": {}
+            },
+            "max_node": 2
+        },
+        "elements": [
+            {
+                "dtype": "compas_timber.elements/Wall",
+                "data": {
+                    "frame": {
+                        "dtype": "compas.geometry/Frame",
+                        "data": {
+                            "point": [
+                                7033.155539999999,
+                                9051.639983999998,
+                                0.0
+                            ],
+                            "xaxis": [
+                                1.0,
+                                0.0,
+                                0.0
+                            ],
+                            "yaxis": [
+                                0.0,
+                                1.0,
+                                0.0
+                            ]
+                        },
+                        "name": "Frame",
+                        "guid": "be9a31ed-7310-4f8b-a500-6c46b3fec27b"
+                    },
+                    "transformation": null,
+                    "name": "Wall",
+                    "width": 330.0000060000002,
+                    "height": 2850.0,
+                    "length": 7334.744471
+                },
+                "guid": "189f29ca-5f65-4bab-9112-7d737149baf4"
+            },
+            {
+                "dtype": "compas_timber.elements/Wall",
+                "data": {
+                    "frame": {
+                        "dtype": "compas.geometry/Frame",
+                        "data": {
+                            "point": [
+                                14037.900005,
+                                9051.639984,
+                                0.0
+                            ],
+                            "xaxis": [
+                                1.0,
+                                0.0,
+                                0.0
+                            ],
+                            "yaxis": [
+                                0.0,
+                                1.0,
+                                0.0
+                            ]
+                        },
+                        "name": "Frame",
+                        "guid": "971ce003-0d30-42bd-909a-7b56f2de1cbf"
+                    },
+                    "transformation": null,
+                    "name": "Wall",
+                    "width": 3481.170113,
+                    "height": 2850.0,
+                    "length": 330.0000060000002
+                },
+                "guid": "4968ae05-1946-4e81-b909-78ed7123be38"
+            },
+            {
+                "dtype": "compas_timber.elements/Wall",
+                "data": {
+                    "frame": {
+                        "dtype": "compas.geometry/Frame",
+                        "data": {
+                            "point": [
+                                6703.155534000001,
+                                9051.639984000001,
+                                0.0
+                            ],
+                            "xaxis": [
+                                1.0,
+                                0.0,
+                                0.0
+                            ],
+                            "yaxis": [
+                                0.0,
+                                1.0,
+                                0.0
+                            ]
+                        },
+                        "name": "Frame",
+                        "guid": "f925d591-111c-4582-883e-9e3b87105d32"
+                    },
+                    "transformation": null,
+                    "name": "Wall",
+                    "width": 4416.142254,
+                    "height": 2850.0,
+                    "length": 330.0000059999993
+                },
+                "guid": "ef517190-ebb5-4bac-80fb-513b1cd6dcba"
+            }
+        ],
+        "materials": [],
+        "element_material": {}
+    },
+    "guid": "0f020943-c35e-485b-9edd-57077fd63a9c"
+}

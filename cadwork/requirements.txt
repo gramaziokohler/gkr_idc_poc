@@ -1,0 +1,3 @@
+compas_timber @ git+https://github.com/gramaziokohler/compas_timber@model
+compas_cadwork @ git+https://github.com/gramaziokohler/compas_cadwork@main
+cwmath
