@@ -54,11 +54,11 @@ for wall in walls:
     model.add_wall(wall)
 
 # show model
-# viewer = create_viewer()
-# for wall in model.walls:
-    # viewer.scene.add(wall.geometry)
+viewer = create_viewer()
+for wall in model.walls:
+    viewer.scene.add(wall.geometry)
 
-# viewer.show()
+viewer.show()
 
 # save to file
 PATH = os.path.join(os.path.dirname(__file__), "model.json")
