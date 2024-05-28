@@ -6,22 +6,25 @@ from compas_timber.connections import TButtJoint
 from compas_timber.connections import LButtJoint
 from compas_timber.elements import DrillFeature
 from compas_timber.elements import CutFeature
+from compas_timber.elements import Beam
 
 from compas_cadwork.utilities.events import ElementDelta
 from compas_cadwork.utilities import remove_elements
 from compas_cadwork.utilities import get_all_element_ids
 from compas_cadwork.conversions import point_to_cadwork
 from compas_cadwork.conversions import vector_to_cadwork
+from compas_cadwork.datamodel import Element
 
 import cadwork
 from attribute_controller import set_name
-from attribute_controller import is_connector_axis
+from attribute_controller import is_beam
 from element_controller import create_rectangular_beam_vectors
 from element_controller import cut_elements_with_miter
 from element_controller import cut_corner_lap
 from element_controller import cut_t_lap
 from element_controller import cut_element_with_plane
 from element_controller import create_rectangular_panel_vectors
+from element_controller import get_active_identifiable_element_ids
 
 from cwmath.cwplane3d import CwPlane3d
 from cwmath.cwvector3d import CwVector3d
@@ -72,7 +75,7 @@ class Controller:
         self._delta = ElementDelta()
 
     def load_model_from_file(self, file_path):
-        self.clear_model()
+        # self.clear_model()
         model = json_load(file_path)
         self.create_walls(model)
         self.create_beams(model)
@@ -85,11 +88,14 @@ class Controller:
         remove_elements(list(get_all_element_ids()))
 
     def export_model_to_file(self, file_path):
-        new_elements, removed_elements = self._delta.check_for_changed_elements()
+        # new_elements, removed_elements = self._delta.check_for_changed_elements()
+        for index, wall in enumerate(self.model.walls):
+            wall.group = self.model.add_group(name=f"wall0{index}", element=wall)
+        new_elements = [Element.from_id(e) for e in get_active_identifiable_element_ids()]
         if new_elements:
             self.handle_new_elements(new_elements)
-        if removed_elements:
-            self.handle_removed_elements(removed_elements)
+        # if removed_elements:
+        #     self.handle_removed_elements(removed_elements)
         json_dump(self.model, file_path)
     
     def handle_new_elements(self, new_elements):
@@ -98,7 +104,20 @@ class Controller:
             if element.is_drilling:
                 drilled_elements = element.get_elements_in_contact()
                 self.add_drilling(element, drilled_elements)
-    
+            elif is_beam(element.id):
+                self.add_beam(element)
+
+    def add_beam(self, e_beam):
+        beam = Beam(e_beam.frame, e_beam.length, e_beam.width, e_beam.height)
+        # HACK: mega hack, figure out how to get available groups, and how to associate beams with HK in cadwork
+        group = self.model.walls[1].group
+        self.model.add_element(beam, parent=group)
+        self.model._beams.append(beam)
+
+    def find_connections(self):
+        pass
+
+
     def add_drilling(self, e_drill, e_beams):
         for e_b in e_beams:
             beam = self.model.element_map[e_b.id]
