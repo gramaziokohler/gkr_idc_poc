@@ -43,8 +43,9 @@ for e_bbox in e_bboxes:
 
 # create Walls from each element
 walls = []
-for box in boxes:
+for index, box in enumerate(boxes):
     wall = Wall.from_box(box)
+    wall.name = f"Wall0{index}"
     walls.append(wall)
 
 # add elements to model
